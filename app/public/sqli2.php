@@ -7,7 +7,8 @@
 
     <?php
     if (isset($_GET["articulo"])) {
-        $conexion = mysqli_connect("localhost", "root", "", "demos")
+        //Como esto se implementa en un contenedor docker, el host no es localhost, sino el nombre del servicio: mysql
+        $conexion = mysqli_connect(mysql, "root", "secret", "demos")
         or die ("No se puede conectar con el servidor");
 
         $queEmp = "SELECT * FROM demos.articulos where Nombre ='" . $_GET["articulo"] . "'";
